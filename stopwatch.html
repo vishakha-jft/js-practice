@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <title>Stopwatch</title>
+        <script>
+            let sin;
+            function start(){
+                sin=setInterval(settime,1000);
+                document.getElementById('pause').disabled=false;
+                document.getElementById('reset').disabled=false;
+                document.getElementById('start').disabled=true;
+            }
+            function pause(){
+                clearInterval(sin);
+                document.getElementById('resume').disabled=false;
+                document.getElementById('pause').disabled=true;
+            }
+            function resume(){
+                sin=setInterval(settime,1000);
+                document.getElementById('resume').disabled=true;
+                document.getElementById('pause').disabled=false;
+            }
+            function reset(){
+                clearInterval(sin);
+                document.getElementById('pause').disabled=true;
+                document.getElementById('resume').disabled=true;
+                document.getElementById('start').disabled=false;
+                document.getElementById('reset').disabled=true;
+                document.getElementById("hh").innerHTML="00"; 
+                document.getElementById("mm").innerHTML="00";
+                document.getElementById("ss").innerHTML="00";
+            }
+            function settime(){                
+                let hh=parseInt(document.getElementById("hh").innerHTML);
+                let mm=parseInt(document.getElementById("mm").innerHTML);
+                let ss=parseInt(document.getElementById("ss").innerHTML);
+                if(ss==00 && mm==0 && hh==24){
+                    clearInterval(sin);
+                    return;
+                }
+                ss=ss+1;
+                if( ss > 59){
+                    ss=00
+                    mm=mm+1
+                    if(mm > 59 && hh!=24){
+                        mm=0
+                        hh=hh+1
+                    }
+                }
+                document.getElementById("hh").innerHTML=hh<10 ? "0"+hh : hh; 
+                document.getElementById("mm").innerHTML=mm<10 ? "0"+mm : mm;
+                document.getElementById("ss").innerHTML=ss<10 ? "0"+ss : ss;
+            }
+         </script>
+    </head>
+    <body>
+        <span id="hh" >00</span>:
+        <span id="mm" >00</span>:
+        <span id="ss" >00</span>
+        <br>
+        <button id="start" onclick="start()">Start</button>
+        <button id="pause" onclick="pause()" disabled>Pause</button>
+        <button id="resume" onclick="resume()" disabled>Resume</button>
+        <button id="reset" onclick="reset()" disabled>Reset</button>
+    </body>
+</html>

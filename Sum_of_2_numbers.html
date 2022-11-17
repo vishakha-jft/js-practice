@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Sum of the 2 numbers</title>
+        <script>
+            function sum(){
+            let num1=document.getElementById("first_no").value;
+            let num2=document.getElementById("second_no").value;
+            let Result=parseInt(num1)+parseInt(num2);
+            if(isNaN(Result)==false){
+                document.getElementById("sum").innerHTML=Result;                
+            }
+            else{
+                alert("Inputs are Wrong! Try again with Integer value");
+                return;
+            }
+            
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+        <label>First Number :</label>
+        <input id="first_no"><br>
+        <label>Second Number :</label>
+        <input id="second_no"><br>
+        <label>Sum :</label>
+        <label id="sum"></label><br>
+        <button onclick="sum()">Result</button>
+        </div>
+    </body>
+</html>
