@@ -1,0 +1,40 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <div class="block">
+        <p>
+        <img src="https://thumbs.dreamstime.com/b/picturesque-autumn-scenery-santa-maddalena-village-church-road-colorful-trees-meadows-foreground-mountain-peaks-159426189.jpg" alt="like the image" width="200" height="200" id="0">
+        <label></label>
+        <img src="https://thumbs.dreamstime.com/b/amazing-misty-autumn-scenery-lake-sorapis-dolomites-italy-beautiful-mountains-colorful-yellow-larches-shore-193683774.jpg" alt="like the image" width="200" height="200" id="0">        
+        <label></label>            
+        </p>
+        <p>
+            <img src="https://img.lovepik.com/photo/40024/8568.jpg_wh300.jpg" alt="like the image" width="200" height="200" id="0">
+            <label></label>
+            <img src="https://img.freepik.com/free-photo/beautiful-scenery-phragmites-plants-by-sea-with-swimming-pelican-sunset_181624-37787.jpg?w=2000" alt="like the image" width="200" height="200" id="0">            
+            <label></label>               
+        </p>
+        <p>
+            <img  class = "img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/spirit-island-jasper-ab-canada-royalty-free-image-1575298614.jpg?crop=0.668xw:1.00xh;0.170xw,0&resize=640:*" alt="like the image" width="200" height="200" id="0">
+            <label></label> 
+            <img src="https://thumbs.dreamstime.com/z/natural-scenery-765677.jpg" alt="like the image" width="200" height="200" id="0">            
+            <label></label>               
+        </div>
+        <script>
+            // function like(id){
+            //      let counter=document.getElementById(id).id;
+            //      counter=parseInt(counter)+1;
+            //      document.getElementById(id).innerHTML=counter;
+            // }
+            const img=document.getElementsByTagName("img");
+            const label=document.getElementsByTagName("label");
+            for(let i=0;i<img.length;i++){
+                img[i].addEventListener("click",()=>{
+                    img[i].id=parseInt(img[i].id)+1;
+                    label[i].innerHTML=img[i].id;
+                })
+            };
+        </script>
+    </body>
+</html>
