@@ -1,6 +1,7 @@
 let objid;
-function display(){
-    listall(details);      
+async function display(){
+   let abc=await listall();
+   details(abc);  
 }  
 function details(emp){
     var html = "<table border='1|1'><tr><th>Name</th><th>Job</th><th>Salary</th><th> Action </th></tr>";
@@ -14,10 +15,11 @@ function details(emp){
     html+="</table>";
     document.getElementById("box").innerHTML = html;
 }
-function Delete(id){
-    Deleteemployee(id,display);
+async function Delete(id){
+    await Deleteemployee(id);
+    display();
 }  
-function add(){
+async function add(){
     var name=document.getElementById("name").value;
     var job=document.getElementById("job").value
     var sal=document.getElementById("sal").value 
@@ -26,19 +28,22 @@ function add(){
         "job":job,
         "salary":sal
     }
-    addemployee(obj,display);
+    await addemployee(obj);
+    display();
     clear();
 }
-function update(id){
+async function update(id){
     document.getElementById('add').disabled=true;
     document.getElementById('updatebtn').disabled=false;
-    updateget(id,showdata);
+    let obj=await updateget(id);
+    showdata(obj);
 }
-function updatefinal(){
+async function updatefinal(){
     var name=document.getElementById("name").value;
     var job=document.getElementById("job").value;
     var sal=document.getElementById("sal").value;
-    updatefinalemp(name,job,sal,objid,display);
+    await updatefinalemp(name,job,sal,objid);
+    display();
     document.getElementById('add').disabled=false;
     document.getElementById('updatebtn').disabled=true;
     clear();    
@@ -53,4 +58,7 @@ function showdata(obj){
     document.getElementById("job").value=obj.job;
     document.getElementById("sal").value=obj.salary;
     objid=obj.id;
+}
+function showerror(){
+    alert("Something is wrong with the server please try again!!");
 }

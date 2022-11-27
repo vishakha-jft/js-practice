@@ -1,6 +1,7 @@
 let objid;
 function display(){
-    listall(details);      
+   let p= listall();
+   p.then(details,showerror);  
 }  
 function details(emp){
     var html = "<table border='1|1'><tr><th>Name</th><th>Job</th><th>Salary</th><th> Action </th></tr>";
@@ -15,7 +16,9 @@ function details(emp){
     document.getElementById("box").innerHTML = html;
 }
 function Delete(id){
-    Deleteemployee(id,display);
+    let p=Deleteemployee(id);
+    p.then(display)
+    .catch(showerror);
 }  
 function add(){
     var name=document.getElementById("name").value;
@@ -26,19 +29,31 @@ function add(){
         "job":job,
         "salary":sal
     }
-    addemployee(obj,display);
+    let p= addemployee(obj);
+    //then-> accept
+    // p.then((data)=> {
+    //     console.log(data);
+    // }) 
+    //catch-> reject
+    //.catch((error)=>{
+    //     console.log(error);
+    // })
+    p.then(display)  
+    .catch(showerror);
     clear();
 }
 function update(id){
     document.getElementById('add').disabled=true;
     document.getElementById('updatebtn').disabled=false;
-    updateget(id,showdata);
+    let p=updateget(id);
+    p.then(showdata,showerror);
 }
 function updatefinal(){
     var name=document.getElementById("name").value;
     var job=document.getElementById("job").value;
     var sal=document.getElementById("sal").value;
-    updatefinalemp(name,job,sal,objid,display);
+    let p=updatefinalemp(name,job,sal,objid);
+    p.then(display,showerror);
     document.getElementById('add').disabled=false;
     document.getElementById('updatebtn').disabled=true;
     clear();    
@@ -53,4 +68,7 @@ function showdata(obj){
     document.getElementById("job").value=obj.job;
     document.getElementById("sal").value=obj.salary;
     objid=obj.id;
+}
+function showerror(){
+    alert("Something is wrong with the server please try again!!");
 }
