@@ -1,0 +1,46 @@
+{
+  "employee": [
+    {
+      "id": 1,
+      "name": "sachin",
+      "job": "cricketer",
+      "salary": "10000000"
+    },
+    {
+      "id": 2,
+      "name": "vishakha",
+      "job": "SDE",
+      "salary": "10000000"
+    },
+    {
+      "id": 4,
+      "name": "areena",
+      "job": "Artist",
+      "salary": "10000000"
+    },
+    {
+      "name": "latika",
+      "job": "gammer",
+      "salary": "12345678",
+      "id": 6
+    },
+    {
+      "name": "vishakha",
+      "job": "sde",
+      "salary": "12334",
+      "id": 7
+    },
+    {
+      "name": "a",
+      "job": "b",
+      "salary": "1",
+      "id": 8
+    },
+    {
+      "name": "b",
+      "job": "c",
+      "salary": "2",
+      "id": 9
+    }
+  ]
+}
